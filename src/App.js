@@ -4,9 +4,7 @@ import ResponsiveDrawer from './components/ResponsiveDrawer/ResponsiveDrawer';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <ResponsiveDrawer></ResponsiveDrawer>
-      </header>
+      <ResponsiveDrawer></ResponsiveDrawer>
     </div>
   );
 }

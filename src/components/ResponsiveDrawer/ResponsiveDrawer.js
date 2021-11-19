@@ -18,6 +18,7 @@ import LayersIcon from '@material-ui/icons/Layers';
 import GridViewIcon from '@material-ui/icons/GridView';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import './ResponsiveDrawer.css'
+import { Outlet } from 'react-router-dom'
 
 const drawerWidth = 240;
 
@@ -35,25 +36,25 @@ function ResponsiveDrawer(props) {
 			</Toolbar>
 			<Divider />
 			<List>
-				<ListItem button key={'新闻管理'}>
+				<ListItem component="a" button key={'新闻管理'}>
 					<ListItemIcon>
 						<LibraryBooksIcon />
 					</ListItemIcon>
 					<ListItemText primary={'新闻管理'} />
 				</ListItem>
-				<ListItem button key={'影片管理'}>
+				<ListItem component="a" button key={'影片管理'}>
 					<ListItemIcon>
 						<LayersIcon />
 					</ListItemIcon>
 					<ListItemText primary={'影片管理'} />
 				</ListItem>
-				<ListItem button key={'影片分类'}>
+				<ListItem component="a" button key={'影片分类'}>
 					<ListItemIcon>
 						<GridViewIcon />
 					</ListItemIcon>
 					<ListItemText primary={'影片分类'} />
 				</ListItem>
-				<ListItem button key={'影片上传'}>
+				<ListItem href="/#/upload" component="a" button key={'影片上传'} >
 					<ListItemIcon>
 						<CloudUploadIcon />
 					</ListItemIcon>
@@ -84,9 +85,9 @@ function ResponsiveDrawer(props) {
 						<MenuIcon />
 					</IconButton>
 					<Typography variant="h6" noWrap component="div">
-						电影后台管理系统
+						电影管理
 					</Typography>
-					<IconButton className="user-icon">
+					<IconButton className="user-icon" href="/#/user">
 						<AccountCircleIcon></AccountCircleIcon>
 					</IconButton>
 				</Toolbar>
@@ -118,8 +119,7 @@ function ResponsiveDrawer(props) {
 			</Box>
 
 			<Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
-				<Toolbar />
-				<Typography paragraph>电影</Typography>
+				<Outlet></Outlet>
 			</Box>
 
 		</Box>
