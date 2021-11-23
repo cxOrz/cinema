@@ -1,22 +1,22 @@
 import React from 'react'
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import Toolbar from '@material-ui/core/Toolbar';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItem from '@material-ui/core/ListItem';
-import IconButton from '@material-ui/core/IconButton';
-import Divider from '@material-ui/core/Divider';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-import LayersIcon from '@material-ui/icons/Layers';
-import GridViewIcon from '@material-ui/icons/GridView';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import Drawer from '@mui/material/Drawer';
+import AppBar from '@mui/material/AppBar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItem from '@mui/material/ListItem';
+import IconButton from '@mui/material/IconButton';
+import Divider from '@mui/material/Divider';
+import CssBaseline from '@mui/material/CssBaseline';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import LayersIcon from '@mui/icons-material/Layers';
+import GridViewIcon from '@mui/icons-material/GridView';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import './ResponsiveDrawer.css'
 import { Outlet } from 'react-router-dom'
 
@@ -36,19 +36,19 @@ function ResponsiveDrawer(props) {
 			</Toolbar>
 			<Divider />
 			<List>
-				<ListItem component="a" button key={'新闻管理'}>
+				<ListItem href="/#/news" component="a" button key={'新闻管理'}>
 					<ListItemIcon>
 						<LibraryBooksIcon />
 					</ListItemIcon>
 					<ListItemText primary={'新闻管理'} />
 				</ListItem>
-				<ListItem component="a" button key={'影片管理'}>
+				<ListItem href="/#/movie-manage" component="a" button key={'影片管理'}>
 					<ListItemIcon>
 						<LayersIcon />
 					</ListItemIcon>
 					<ListItemText primary={'影片管理'} />
 				</ListItem>
-				<ListItem component="a" button key={'影片分类'}>
+				<ListItem href="/#/movie-classify" component="a" button key={'影片分类'}>
 					<ListItemIcon>
 						<GridViewIcon />
 					</ListItemIcon>
@@ -118,7 +118,15 @@ function ResponsiveDrawer(props) {
 				</Drawer>
 			</Box>
 
-			<Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+			<Box component="main" sx={{
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+				alignItems: 'center',
+				height: '100vh',
+				flexGrow: 1, p: 3,
+				width: { sm: `calc(100% - ${drawerWidth}px)` },
+			}}>
 				<Outlet></Outlet>
 			</Box>
 

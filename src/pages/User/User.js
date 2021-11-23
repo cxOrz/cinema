@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserName as setUser } from '../../reducers/user'
 import InputWithIcon from '../../components/InputWithIcon/InputWithIcon'
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import LockIcon from '@material-ui/icons/Lock';
-import Button from '@material-ui/core/Button';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import LockIcon from '@mui/icons-material/Lock';
+import Button from '@mui/material/Button';
 import axios from 'axios';
 import { LOGIN } from '../../configs/api'
 import { useNavigate } from 'react-router-dom'
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
+import useAuth from '../../components/Auth/Auth'
 
 export default function User() {
   const navigate = useNavigate()
@@ -16,25 +17,35 @@ export default function User() {
   const dispatch = useDispatch()
   const [UserName, setUserName] = useState('')
   const [UserPassword, setUserPassword] = useState('')
+  const { login: Login } = useAuth()
 
-  function login() {
-    axios.post(LOGIN.URL, {
-      username: UserName,
-      password: UserPassword
-    }).then((res) => {
-      if (res.data.code === 1) {
-        dispatch(setUser(UserName.toString()))
-        navigate('/')
-      }
-    })
+  function login(kbd = { key: '' }) {
+    if (kbd.key === '' || kbd.key === 'Enter') {
+      axios.post(LOGIN.URL, {
+        username: UserName,
+        password: UserPassword
+      }).then((res) => {
+        console.log(res.data)
+        if (res.data.code === 1) {
+          dispatch(setUser(UserName.toString()))
+          console.log(user)
+          Login().then(() => {
+            console.log(1)
+          })
+          navigate('/')
+        }
+      })
+    }
   }
   function logout() {
     dispatch(setUser('Anonymous'))
-
   }
 
   return (
-    <div>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
       {user === 'Anonymous' ?
         <>
           <InputWithIcon title="账号"
@@ -52,13 +63,16 @@ export default function User() {
           >
             <LockIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }}></LockIcon>
           </InputWithIcon>
-          <Button onClick={login} sx={{ mt: 2 }} variant="contained">登录</Button>
+          <Button onClick={() => login()} sx={{ mt: 2, width: '1rem', alignSelf: 'center' }} variant="contained">登录</Button>
         </>
         :
         <>
           <Typography variant="h3">您好，{user}</Typography>
           <br />
-          <Button onClick={logout} variant="contained">登出</Button>
+          <Button sx={{
+            width: '1rem',
+            alignSelf: 'center'
+          }} onClick={logout} variant="contained">登出</Button>
         </>
       }
     </div>
