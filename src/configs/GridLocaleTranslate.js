@@ -1,6 +1,6 @@
 export const GRID_LOCALE_TEXT = {
   // Root
-  noRowsLabel: '没有行',
+  noRowsLabel: '没有内容',
   noResultsOverlayLabel: '未找到任何结果.',
   errorOverlayDefaultLabel: '发生了一个错误.',
 
@@ -84,7 +84,7 @@ export const GRID_LOCALE_TEXT = {
   footerRowSelected: (count) =>
     count !== 1
       ? `选中 ${count.toLocaleString()} 行`
-      : `选中第 ${count.toLocaleString()} 行`,
+      : `选中 ${count.toLocaleString()} 行`,
 
   // Total rows footer text
   footerTotalRows: '总行数:',

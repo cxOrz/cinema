@@ -15,10 +15,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import LayersIcon from '@mui/icons-material/Layers';
-import GridViewIcon from '@mui/icons-material/GridView';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import './ResponsiveDrawer.css'
 import { Outlet } from 'react-router-dom'
+import GridViewIcon from '@mui/icons-material/GridView';
 
 const drawerWidth = 240;
 
@@ -48,11 +48,11 @@ function ResponsiveDrawer(props) {
 					</ListItemIcon>
 					<ListItemText primary={'影片管理'} />
 				</ListItem>
-				<ListItem href="/#/movie-classify" component="a" button key={'影片分类'}>
+				<ListItem href="/#/movie-classify" component="a" button key={'类别管理'}>
 					<ListItemIcon>
 						<GridViewIcon />
 					</ListItemIcon>
-					<ListItemText primary={'影片分类'} />
+					<ListItemText primary={'类别管理'} />
 				</ListItem>
 				<ListItem href="/#/upload" component="a" button key={'影片上传'} >
 					<ListItemIcon>
