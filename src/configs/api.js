@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://192.168.22.72:8000'
+export const BASE_URL = 'http://172.30.86.195:8000'
 export const LOGIN = {
   URL: BASE_URL + '/login'
 }
@@ -7,6 +7,9 @@ export const UPLOAD = {
 }
 export const MOVIEINFO = {
   URL: BASE_URL + '/select'
+}
+export const UPDATEMOVIEINFO = {
+  URL: BASE_URL + '/update'
 }
 export const ADDCATEGORY = {
   URL: BASE_URL + '/addcategory'
@@ -19,4 +22,16 @@ export const UPDATECATEGORY = {
 }
 export const SELECTCATEGORY = {
   URL: BASE_URL + '/selectcategory'
+}
+export const AllNEWS = {
+  URL: BASE_URL + '/allnews'
+}
+export const ADDNEWS = {
+  URL: BASE_URL + '/addnew'
+}
+export const UPDATENEWS = {
+  URL: BASE_URL + '/upnew'
+}
+export const DELETENEWS = {
+  URL: BASE_URL + '/delnew'
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@mui/styles';
 import { DataGrid, GridToolbarContainer } from '@mui/x-data-grid'
 import { GRID_LOCALE_TEXT } from '../../configs/GridLocaleTranslate';
@@ -10,8 +10,8 @@ import Add from '@mui/icons-material/Add';
 import axios from 'axios';
 import { ADDCATEGORY, DELETECATEGORY, SELECTCATEGORY, UPDATECATEGORY } from '../../configs/api';
 import FormDialog from '../../components/FormDialog/FormDialog';
-import { Alert, Snackbar } from '@mui/material';
-import { useNavigate } from 'react-router';
+import Alert from '@mui/material/Alert';
+import Snackbar from '@mui/material/Snackbar';
 
 function MovieClassify() {
   const useStyle = makeStyles({
@@ -146,7 +146,9 @@ function MovieClassify() {
           })
         })
         setOpen(true)
-        // window.location.reload()/
+        setTimeout(() => {
+          window.location.reload()
+        }, 1000);
       }
     })
   }

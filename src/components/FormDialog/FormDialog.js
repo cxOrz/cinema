@@ -1,4 +1,4 @@
-import React, { useState, useRef, useReducer } from 'react';
+import React, { useState, useRef } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -46,7 +46,6 @@ export default function FormDialog(props) {
                     refs.current.push(r)
                   }
                 }}
-                autoFocus
                 margin="dense"
                 id="name"
                 label={value}

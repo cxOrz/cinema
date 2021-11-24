@@ -22,9 +22,22 @@ ReactDOM.render(
             <Route path="/" element={<ResponsiveDrawer />}>
               <Route index element={<Main />} />
               <Route path="user" element={<User />} />
-              <Route path="news" element={<News />} />
-              <Route path="movie-manage" element={<MovieManage />} />
-              <Route path="movie-classify" element={<MovieClassify />} />
+              <Route path="news" element={
+                <RequireAuth>
+                  <News />
+                </RequireAuth>} />
+              <Route path="movie-manage" element={
+                <RequireAuth>
+                  <MovieManage />
+                </RequireAuth>
+              }
+              />
+              <Route path="movie-classify" element={
+                <RequireAuth>
+                  <MovieClassify />
+                </RequireAuth>
+              }
+              />
               <Route path="upload" element={
                 <RequireAuth>
                   <MovieUpload />

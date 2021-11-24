@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserName as setUser } from '../../reducers/user'
 import InputWithIcon from '../../components/InputWithIcon/InputWithIcon'
@@ -16,6 +16,7 @@ export default function User() {
   const user = useSelector(state => { return state.user.username })
   const dispatch = useDispatch()
   const [UserName, setUserName] = useState('')
+  const username = localStorage.getItem('login')
   const [UserPassword, setUserPassword] = useState('')
   const { login: Login } = useAuth()
 
@@ -25,12 +26,11 @@ export default function User() {
         username: UserName,
         password: UserPassword
       }).then((res) => {
-        console.log(res.data)
         if (res.data.code === 1) {
           dispatch(setUser(UserName.toString()))
           console.log(user)
           Login().then(() => {
-            console.log(1)
+            localStorage.setItem('login', UserName.toString())
           })
           navigate('/')
         }
@@ -38,7 +38,9 @@ export default function User() {
     }
   }
   function logout() {
-    dispatch(setUser('Anonymous'))
+    localStorage.setItem('login', '')
+    dispatch(setUser(''))
+    navigate('/user')
   }
 
   return (
@@ -46,7 +48,7 @@ export default function User() {
       display: 'flex',
       flexDirection: 'column',
     }}>
-      {user === 'Anonymous' ?
+      {username === '' ?
         <>
           <InputWithIcon title="账号"
             type="text"
@@ -67,7 +69,7 @@ export default function User() {
         </>
         :
         <>
-          <Typography variant="h3">您好，{user}</Typography>
+          <Typography variant="h3">您好，{username}</Typography>
           <br />
           <Button sx={{
             width: '1rem',
