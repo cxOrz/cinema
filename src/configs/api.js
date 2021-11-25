@@ -11,6 +11,9 @@ export const MOVIEINFO = {
 export const UPDATEMOVIEINFO = {
   URL: BASE_URL + '/update'
 }
+export const DELETEMOVIEINFO = {
+  URL: BASE_URL + '/deletedetail'
+}
 export const ADDCATEGORY = {
   URL: BASE_URL + '/addcategory'
 }
@@ -34,4 +37,7 @@ export const UPDATENEWS = {
 }
 export const DELETENEWS = {
   URL: BASE_URL + '/delnew'
+}
+export const NETEASENEWS = {
+  URL: 'https://api.sumt.cn/api/iciba.php?format=json'
 }

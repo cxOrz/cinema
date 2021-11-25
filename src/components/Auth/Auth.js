@@ -51,8 +51,7 @@ export default function AuthConsumer() {
 export function RequireAuth({ children }) {
   // const { authed } = AuthConsumer();
   const authed = localStorage.getItem('login')
-
-  return authed !== '' ? (
+  return authed !== '' && authed !== null ? (
     children
   ) : (
     <Navigate to="/user" replace />

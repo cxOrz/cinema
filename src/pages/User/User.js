@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserName as setUser } from '../../reducers/user'
 import InputWithIcon from '../../components/InputWithIcon/InputWithIcon'
@@ -48,7 +48,7 @@ export default function User() {
       display: 'flex',
       flexDirection: 'column',
     }}>
-      {username === '' ?
+      {username === '' || username == null ?
         <>
           <InputWithIcon title="账号"
             type="text"

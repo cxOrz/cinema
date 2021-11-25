@@ -7,7 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Delete from '@mui/icons-material/Delete';
 import Edit from '@mui/icons-material/Edit';
 import axios from 'axios';
-import { MOVIEINFO, UPDATEMOVIEINFO } from '../../configs/api';
+import { DELETEMOVIEINFO, MOVIEINFO, UPDATEMOVIEINFO } from '../../configs/api';
 import FormDialog from '../../components/FormDialog/FormDialog';
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
@@ -113,13 +113,12 @@ function MovieManage() {
   }, [])
 
   function removeRow(data) {
-    axios.post(UPDATEMOVIEINFO.URL, {
-      id: data,
-      mcategory: '暂无',
-      myear: '暂无',
-      mauthor: '暂无',
+    axios.get(DELETEMOVIEINFO.URL, {
+      params: {
+        id: data
+      }
     }).then((res) => {
-      if (res.data.state === '修改成功') {
+      if (res.data.code === 1) {
         setOpen(true)
         setTimeout(() => {
           window.location.reload()
